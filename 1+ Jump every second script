@@ -6,7 +6,16 @@ _G.AutoRebirth = true
 _G.AutoHatch = true
 _G.Egg = true
 _G.teleportEgg = true
+_G.AutoEquipBest = true
+_G.antiafk = true
 
+
+function AutoEquipBest()
+	while _G.AutoEquipBest == true do
+		game:GetService("ReplicatedStorage").RemoteEvents.PetActionRequest:InvokeServer("EquipBest",{["Pets"] = {316071,360748,507109,432033}})
+		wait(1.5)
+	end
+end
 
 function teleportEgg()
 		if _G.Egg == "Noob" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-19.629241943359375, 0.44275182485580444, -98.40385437011719) end
@@ -110,6 +119,51 @@ Eggs:AddButton({
 		teleportEgg()
 	end
 })
+
+local Other = Window:MakeTab({
+	Name = "Other",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Other:AddSection({
+	Name = "AutoEquipBest"
+})
+
+Other:AddToggle({
+	Name = "AutoEquipBest",
+	Default = false,
+	Callback = function(Value)
+		_G.AutoEquipBest = Value
+		AutoEquipBest()
+	end    
+})
+
+Other:AddLabel("AutoEquip works it just doesent show in game")
+
+local Section = Other:AddSection({
+	Name = "AntiAfk"
+})
+
+Other:AddButton({
+	Name = "AntiAfk",
+	Callback = function()
+		_G.antiafk = Value
+		antiafk()
+  	end    
+})
+
+local Info = Window:MakeTab({
+	Name = "Info",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Info:AddSection({
+	Name = "Made by"
+})
+
+Info:AddLabel("Made by JAKSKJ#6711 and SushyDie")
 
 -- with what's underneath, if you re-run the script, all the things that are running with this library will stop [always put it at the end]
 OrionLib:Init()
