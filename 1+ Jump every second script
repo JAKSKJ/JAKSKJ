@@ -107,7 +107,7 @@ Eggs:AddToggle({
 Eggs:AddButton({
 	Name = "Teleport to selected egg",
 	Callback = function()
-		teleportEgg
+		teleportEgg()
 	end
 })
 
