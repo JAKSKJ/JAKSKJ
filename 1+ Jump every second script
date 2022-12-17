@@ -165,7 +165,14 @@ local Section = Info:AddSection({
 
 Info:AddLabel("Made by JAKSKJ#6711 and SushyDie")
 
--- with what's underneath, if you re-run the script, all the things that are running with this library will stop [always put it at the end]
+Info:AddButton({
+	Name = "Copy Discord",
+	Callback = function()
+		setclipboard("JAKSKJ#6711")
+  	end    
+})
+
+
 OrionLib:Init()
 
 task.wait(1) 
