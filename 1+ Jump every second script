@@ -10,6 +10,28 @@ _G.AutoEquipBest = true
 _G.antiafk = true
 
 
+-- Functions
+
+
+function antiafk()
+	local bb = game:service'VirtualUser'
+	while _G.antiafk == true do
+		OrionLib:MakeNotification({
+            Name = "Anti-AFK",
+            Content = "Enable",
+            Image = "rbxassetid://4483345998",
+            Time = 3.2
+        })
+		
+  
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+		bb:CaptureController()bb:ClickButton2(Vector2.new())
+		 
+	end)
+	wait(420)
+	end     
+end
+
 function AutoEquipBest()
 	while _G.AutoEquipBest == true do
 		game:GetService("ReplicatedStorage").RemoteEvents.PetActionRequest:InvokeServer("EquipBest",{["Pets"] = {316071,360748,507109,432033}})
@@ -27,6 +49,7 @@ function teleportEgg()
 		if _G.Egg == "Mythical" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(8036.54931640625, 0.44275182485580444, -98.5217514038086) end
 		if _G.Egg == "Goldy" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(10253.2255859375, 0.44275182485580444, -96.97695922851562) end
 		if _G.Egg == "Dark" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(12301.0625, 0.44275182485580444, -96.46475982666016) end
+		if _G.Egg == "Void" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(14349.728515625, 0.14999909698963165, -95.91461181640625) end
 	end
 
 
@@ -51,11 +74,13 @@ end
 end
 
 function AutoWin()
-while _G.AutoWin == true do --in While do end, you need "==" to differentiate. "=" is for set, and "==" is for compare.
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(12313.005859375, 45658.421875, 212.5721893310547)
+while _G.AutoWin == true do
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(14363.2216796875, 64009.96875, 235.6370086669922)
     wait(.3)
 end
 end
+
+-- Tabs and stuff
 
 local Win = Window:MakeTab({
     Name = "Main",
@@ -71,8 +96,8 @@ Win:AddToggle({
     Name = "AutoWin",
     Default = false,
     Callback = function(Value)
-        _G.AutoWin = Value --we set the variable to "Value" before calling the function (lazy for explain but you will understand with experience)
-        AutoWin() --and call the function. the function and the variable must be always on top, before using them in the code in a scirpt
+        _G.AutoWin = Value
+        AutoWin()
 end
 })
 
@@ -98,7 +123,7 @@ local Section = Eggs:AddSection({
 Eggs:AddDropdown({
 	Name = "Choose Egg",
 	Default = "Noob Egg",
-	Options = {"Noob", "Starter", "Rare", "Pro", "Epic", "Legendary", "Mythical", "Godly", "Dark"},
+	Options = {"Noob", "Starter", "Rare", "Pro", "Epic", "Legendary", "Mythical", "Godly", "Dark", "Void"},
 	Callback = function(Value)
 	_G.Egg = Value
 	end    
@@ -148,7 +173,7 @@ local Section = Other:AddSection({
 Other:AddButton({
 	Name = "AntiAfk",
 	Callback = function()
-		_G.antiafk = Value
+		_G.antiafk = true
 		antiafk()
   	end    
 })
@@ -163,7 +188,7 @@ local Section = Info:AddSection({
 	Name = "Made by"
 })
 
-Info:AddLabel("Made by JAKSKJ#6711 and SushyDie")
+Info:AddLabel("Made by JAKSKJ#6711")
 
 Info:AddButton({
 	Name = "Copy Discord",
