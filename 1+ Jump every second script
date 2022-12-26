@@ -8,10 +8,21 @@ _G.Egg = true
 _G.teleportEgg = true
 _G.AutoEquipBest = true
 _G.antiafk = true
+_G.lowgfx = true
 
 
 -- Functions
 
+function lowgfx()
+	for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+		if v:IsA("BasePart") and not v.Parent:FindFirstChild("Humanoid") then
+			v.Material = Enum.Material.SmoothPlastic
+			if v:IsA("Texture") then
+				v:Destroy()
+			end
+		end
+	end
+end
 
 function antiafk()
 	local bb = game:service'VirtualUser'
@@ -29,7 +40,7 @@ function antiafk()
 		 
 	end)
 	wait(420)
-	end     
+	end
 end
 
 function AutoEquipBest()
@@ -99,6 +110,10 @@ Win:AddToggle({
         _G.AutoWin = Value
         AutoWin()
 end
+})
+
+local Section = Win:AddSection({
+	Name = "AutoRebirth"
 })
 
 Win:AddToggle({
@@ -175,6 +190,18 @@ Other:AddButton({
 	Callback = function()
 		_G.antiafk = true
 		antiafk()
+  	end    
+})
+
+local Section = Other:AddSection({
+	Name = "Low gfx"
+})
+
+Other:AddButton({
+	Name = "Low gfx",
+	Callback = function()
+		_G.lowgfx = true
+		lowgfx()
   	end    
 })
 
