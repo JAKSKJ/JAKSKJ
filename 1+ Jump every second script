@@ -61,6 +61,7 @@ function teleportEgg()
 		if _G.Egg == "Goldy" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(10253.2255859375, 0.44275182485580444, -96.97695922851562) end
 		if _G.Egg == "Dark" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(12301.0625, 0.44275182485580444, -96.46475982666016) end
 		if _G.Egg == "Void" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(14349.728515625, 0.14999909698963165, -95.91461181640625) end
+		if _G.Egg == "Desert" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(16397.296875, 0.48457396030426025, -96.91791534423828) end
 	end
 
 
@@ -86,8 +87,8 @@ end
 
 function AutoWin()
 while _G.AutoWin == true do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(14363.2216796875, 64009.96875, 235.6370086669922)
-    wait(.3)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(16410.6015625, 82357.90625, 267.6266174316406)
+    wait(.4)
 end
 end
 
@@ -138,7 +139,7 @@ local Section = Eggs:AddSection({
 Eggs:AddDropdown({
 	Name = "Choose Egg",
 	Default = "Noob Egg",
-	Options = {"Noob", "Starter", "Rare", "Pro", "Epic", "Legendary", "Mythical", "Godly", "Dark", "Void"},
+	Options = {"Noob", "Starter", "Rare", "Pro", "Epic", "Legendary", "Mythical", "Godly", "Dark", "Void", "Desert"},
 	Callback = function(Value)
 	_G.Egg = Value
 	end    
